@@ -32,7 +32,7 @@
             <div class="content">
               <h1>Find your perfect place to LIVE.</h1>
               <form action="map.html" method="GET" class="search-button">
-                <input type="text" name="query" placeholder="Search...">
+                <input type="text" id="SearchInput" name="query" placeholder="Search...">
                 <button type="submit">Search</button>
             </form>
             </div>
@@ -115,6 +115,16 @@
     <p class="copyright">© Rent Ease</p>
     <p class="copyright">Project made by Tejas, Sumit & Soham</p>
   </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchForm = document.getElementById('searchForm');
+      searchForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const searchInput = document.getElementById('SearchInput').value;
+        window.location.href = `map.html?query=${encodeURIComponent(searchInput)}`;
+      });
+    });
+  </script>
 
   </body>
 </html>
