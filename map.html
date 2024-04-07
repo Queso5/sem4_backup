@@ -14,13 +14,24 @@ body { margin: 0; padding: 0; }
 <body>
 <div id="map"></div>
 <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic3VtLW1pc2hyYSIsImEiOiJjbHVtdzI1YTQxZWpkMmpuemVrc3R6aGt1In0.0J-pUXtcBRrg3hbOG1UDSQ';
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic3VtLW1pc2hyYSIsImEiOiJjbHVvbWl2MGYxejI4MmtsbWZyZHNxd2w1In0.fijovQLTzPBTi-BCWItQkw';
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [0, 0], // Default center coordinates
-      zoom: 9 // Default zoom level
+      zoom: 11 // Default zoom level
     });
+
+    var mumbai = {
+      1: { coordinates: [72.932498, 19.119345], price: 60000},
+      2: { coordinates: [72.933547, 19.131552], price: 100000 }
+    };
+    
+    var pune = {
+      1: { coordinates: [73.868457, 18.545757], price: 10000 },
+      2: { coordinates: [73.837214, 18.501158], price: 20000 }
+    };
+
 
     // Function to extract query parameter from URL
     function getQueryVariable(variable) {
@@ -38,32 +49,34 @@ body { margin: 0; padding: 0; }
     document.addEventListener('DOMContentLoaded', function () {
       const query = getQueryVariable('query');
       if (query) {
-        geocode(query);
+        if (query.toLowerCase() === 'mumbai') {
+          plotCoordinates(mumbai);
+          flyToCity(mumbai[1].coordinates);
+        } else if (query.toLowerCase() === 'pune') {
+          plotCoordinates(pune);
+          flyToCity(pune[1].coordinates);
+        }
       }
     });
 
-    function geocode(query) {
-      // Send request to Mapbox Geocoding API
-      fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(query) + '.json?access_token=' + mapboxgl.accessToken)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          // Extract coordinates from response
-          var coordinates = data.features[0].geometry.coordinates;
-          // Center map at the coordinates
-          map.flyTo({
-            center: coordinates,
-            zoom: 12 // Adjust zoom level as needed
-          });
-          // Optionally, add a marker at the coordinates
-          new mapboxgl.Marker()
-            .setLngLat(coordinates)
-            .addTo(map);
-        })
-        .catch(function (error) {
-          console.log('Error:', error);
-        });
+    function plotCoordinates(coordinatesObj) {
+      Object.values(coordinatesObj).forEach((coord) => {
+        var marker = new mapboxgl.Marker({ color: 'red' })
+          .setLngLat(coord.coordinates)
+          .addTo(map);
+
+        var popup = new mapboxgl.Popup({ offset: 25 })
+          .setHTML('<h3>Price:</h3><p>' + coord.price + '</p>');
+
+        marker.setPopup(popup);
+      });
+    }
+
+    function flyToCity(coordinates) {
+      map.flyTo({
+        center: coordinates,
+        zoom: 12
+      });
     }
   </script>
 </body>
