@@ -124,6 +124,17 @@
         window.location.href = `map.html?query=${encodeURIComponent(searchInput)}`;
       });
     });
+
+    // Add this method to the code
+    map.getCoordinates = function() {
+      if (map.getCenter()) {
+        return map.getCenter().lngLat;
+      } else {
+        return null;
+      }
+    };
+    
+    
   </script>
 
   </body>
