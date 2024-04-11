@@ -1,139 +1,266 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Guides</title>
-<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=10, user-scalable=0">
-<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
-<style>
-body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
-</style>
-</head>
-<body>
-<div id="map"></div>
-<script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic3VtLW1pc2hyYSIsImEiOiJjbHVvbWl2MGYxejI4MmtsbWZyZHNxd2w1In0.fijovQLTzPBTi-BCWItQkw';
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [0, 0], // Default center coordinates
-      zoom: 11 // Default zoom level
-    });
-
-    var mumbai = {
-      1: { coordinates: [72.932498, 19.119345], price: 60000},
-      2: { coordinates: [72.933547, 19.131552], price: 100000 },
-      3: { coordinates: [72.8373616, 19.0648226], price: 9500000 },
-      4: { coordinates: [72.833968, 19.1172495], price: 27500000 },
-      5: { coordinates: [72.8412155, 19.1840129], price: 27500000 },
-      6: { coordinates: [72.8411995, 19.1633281], price: 25000000 },
-      7: { coordinates: [72.8618085, 19.1152873	], price: 5500000 },
-      8: { coordinates: [72.8485884, 19.1867193], price: 1000000},
-      9: { coordinates: [72.8485884, 19.1867193], price: 25000000},
-      10:{ coordinates: [72.8422235, 19.2084002], price:14000000 }
-
-    };
-    
-    var pune = {
-      1: { coordinates: [73.868457, 18.545757], price: 10000 },
-      2: { coordinates: [73.837214, 18.501158], price: 20000 },
-      3: { coordinates: [73.85832,  18.51511], price: 150000},
-      4: { coordinates: [73.8603,  18.52150], price: 120000},
-      5: { coordinates: [73.887407, 18.51723], price: 30000 },
-      6: { coordinates: [73.84505, 18.50588], price: 110000 },
-      7: { coordinates: [73.88291, 18.52756], price: 180000 },
-      8: { coordinates: [73.85329, 18.51688], price: 250000 },
-      9: { coordinates: [73.86815, 18.52174], price: 3000000 },
-      10: { coordinates: [73.80311, 18.50619], price: 240000 }
-    };
-
-    var bangalore = {
-      1: { coordinates: [77.529921418441, 12.989932041549842], price: 15000 },
-      2: { coordinates: [77.64202482580896,12.919145905307818], price: 20000 },
-      3: { coordinates: [77.60712171660433,12.92670570007741], price: 180000 },
-      4: { coordinates: [77.71054,12.96450], price: 180000,},
-      5: { coordinates: [77.60001,13.05141], price: 180000,}
-      6: { coordinates: [77.52117230288049,12.827069645964146], price: 190000},
-      7: { coordinates: [77.59953884904377,13.044428595773583], price: 280000},
-      8: { coordinates: [77.39165737580471,13.116897784083983], price: 380000},
-      9: { coordinates: [77.50441881284624,13.09732708253803], price: 150000},
-      10: { coordinates: [77.69872181766239,12.98982727838096], price: 180000}
-    };
-    
-    var delhi = {
-      1: { coordinates: [77.03854186806248,  28.452577383256198], price: 10000 },
-      2: { coordinates: [76.99723685049472,  28.476611044049683], price: 10000 },
-      3: { coordinates: [77.07271508403582,  28.484969296869146], price: 10000 },
-      4: { coordinates: [77.03051859126874,  28.53797654806264], price: 10000 },
-      5: { coordinates: [77.06706907444023,  28.440297208455732], price: 10000 },
-      6: { coordinates: [77.03854186806248,  28.452577383256198], price: 10000 },
-      7: { coordinates: [77.05507202251806,  28.59115112816198], price: 10000 },
-      8: { coordinates: [77.11064064327469,  28.652189131279712], price: 10000 },
-      9: { coordinates: [77.20513701440096,  28.560096829276226], price: 10000 },
-      10: { coordinates: [77.23158411198031,  28.62089202384013], price: 10000 }
-    };
-
-
-    // Function to extract query parameter from URL
-    function getQueryVariable(variable) {
-      const query = window.location.search.substring(1);
-      const vars = query.split('&');
-      for (let i = 0; i < vars.length; i++) {
-        const pair = vars[i].split('=');
-        if (decodeURIComponent(pair[0]) === variable) {
-          return decodeURIComponent(pair[1]);
-        }
+  <head>
+    <meta charset="utf-8" />
+    <title>Guides</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1, minimum-scale=1, maximum-scale=10, user-scalable=0"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
       }
-      return null;
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-  const query = getQueryVariable('query');
-  if (query) {
-    const lowercaseQuery = query.toLowerCase();
-    if (lowercaseQuery === 'mumbai') {
-      plotCoordinates(mumbai);
-      flyToCity(mumbai[1].coordinates);
-    } else if (lowercaseQuery === 'pune') {
-      plotCoordinates(pune);
-      flyToCity(pune[1].coordinates);
-    } else if (lowercaseQuery === 'bangalore') {
-      plotCoordinates(bangalore);
-      flyToCity(bangalore[1].coordinates);
-    } else if (lowercaseQuery === 'delhi') {
-      plotCoordinates(delhi);
-      flyToCity(delhi[1].coordinates);
-    } else {
-      // Handle case when query doesn't match any supported city
-      console.log('Sorry, the city you entered is not supported.');
-    }
-  } else {
-    // Handle case when there's no query parameter
-    console.log('No city query found.');
-  }
-});
-
-    function plotCoordinates(coordinatesObj) {
-      Object.values(coordinatesObj).forEach((coord) => {
-        var marker = new mapboxgl.Marker({ color: 'red' })
-          .setLngLat(coord.coordinates)
-          .addTo(map);
-
-        var popup = new mapboxgl.Popup({ offset: 25 })
-          .setHTML('<h3>Price:</h3><p>' + coord.price + '</p>');
-
-        marker.setPopup(popup);
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      mapboxgl.accessToken =
+        "pk.eyJ1Ijoic3VtLW1pc2hyYSIsImEiOiJjbHVvbWl2MGYxejI4MmtsbWZyZHNxd2w1In0.fijovQLTzPBTi-BCWItQkw";
+      var map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: [0, 0], // Default center coordinates
+        zoom: 11, // Default zoom level
       });
-    }
 
-    function flyToCity(coordinates) {
-      map.flyTo({
-        center: coordinates,
-        zoom: 12
+      var mumbai = {
+        1: { coordinates: [72.932498, 19.119345], price: 60000 },
+        2: { coordinates: [72.933547, 19.131552], price: 100000 },
+        3: { coordinates: [72.8373616, 19.0648226], price: 9500000 },
+        4: { coordinates: [72.833968, 19.1172495], price: 27500000 },
+        5: { coordinates: [72.8412155, 19.1840129], price: 27500000 },
+        6: { coordinates: [72.8411995, 19.1633281], price: 25000000 },
+        7: { coordinates: [72.8618085, 19.1152873], price: 5500000 },
+        8: { coordinates: [72.8485884, 19.1867193], price: 1000000 },
+        9: { coordinates: [72.8485884, 19.1867193], price: 25000000 },
+        10: { coordinates: [72.8422235, 19.2084002], price: 14000000 },
+        11: { coordinates: [72.8373817, 19.136394], price: 1800000 },
+        12: { coordinates: [72.98392629891234, 19.2570093], price: 25600000 },
+        13: { coordinates: [72.854202, 19.1158835], price: 11500000 },
+        14: { coordinates: [72.8479905, 19.2294561], price: 3500000 },
+        15: { coordinates: [72.8640593, 19.2486925], price: 720000 },
+        16: { coordinates: [72.8290479, 19.2292486], price: 1800000 },
+        17: { coordinates: [72.87588069562872, 19.11314845], price: 3000000 },
+        18: { coordinates: [72.854202, 19.1158835], price: 2650000 },
+        19: { coordinates: [72.8619328, 19.2267228], price: 2750000 },
+        20: { coordinates: [72.8412155, 19.1840129], price: 780000 },
+        20: { coordinates: [73.01425130283573, 19.03160615], price: 780000 },
+        21: { coordinates: [72.8669543, 19.1396508], price: 12000000 },
+        22: { coordinates: [73.0992311, 19.0392786], price: 4900000 },
+        23: { coordinates: [72.8798081, 19.1008628], price: 10800000 },
+        24: { coordinates: [72.9818412, 19.2469649], price: 11000000 },
+        25: { coordinates: [72.8640837, 19.2103809], price: 8900000 },
+        26: { coordinates: [72.8563181, 19.1860219], price: 19300000 },
+        27: { coordinates: [73.1146581, 18.9949462], price: 6800000 },
+        28: { coordinates: [72.8356392, 19.0750197], price: 12500000 },
+        29: { coordinates: [72.9970491, 19.1862985], price: 1800000 },
+        30: { coordinates: [72.854202, 19.1158835], price: 32500000 },
+        31: { coordinates: [73.091129, 19.2111814], price: 7000000 },
+        32: { coordinates: [73.0992311, 19.0392786], price: 3300000 },
+        33: { coordinates: [72.87588069562872, 19.11314845], price: 17000000 },
+        34: { coordinates: [73.091129, 19.2111814], price: 2300000 },
+        35: { coordinates: [73.0216566, 19.0316759], price: 8400000 },
+        36: { coordinates: [73.091129, 19.2111814], price: 6000000 },
+        37: { coordinates: [73.0861355, 19.2180493], price: 9900000 },
+        38: { coordinates: [72.8246301, 19.1312947], price: 51000000 },
+        39: { coordinates: [72.8619328, 19.2267228], price: 29900000 },
+        40: { coordinates: [72.8563181, 19.1860219], price: 8000000 },
+        41: { coordinates: [72.9952364, 19.075784], price: 16000000 },
+        42: { coordinates: [73.0992311, 19.0392786], price: 7500000 },
+        43: { coordinates: [73.01425130283573, 19.03160615], price: 19500000 },
+        44: { coordinates: [72.8246301, 19.1312947], price: 22700000 },
+        45: { coordinates: [73.03606195845472, 19.03080375], price: 17500000 },
+        46: { coordinates: [73.0226162, 19.187628], price: 5800000 },
+        47: { coordinates: [73.0643429, 19.0252037], price: 4200000 },
+        48: { coordinates: [73.091129, 19.2111814], price: 4200000},
+        49: { coordinates: [73.0216566, 19.0316759], price: 21000000 },
+        50: { coordinates: [72.98392629891234, 19.2570093], price: 14500000 },
+        51: { coordinates: [73.0010786, 19.0692829], price: 21600000 },
+        52: { coordinates: [72.8412155, 19.1840129], price: 11000000 },
+        53: { coordinates: [73.0591845321935, 19.025773], price: 17500000 },
+        54: { coordinates: [72.9666732, 19.2000627], price: 16000000 },
+        55: { coordinates: [72.854202, 19.1158835], price: 5500000 },
+        56: { coordinates: [73.0591845321935, 19.025773], price: 12700000 },
+        57: { coordinates: [73.0201311109118, 18.97686135], price: 6000000 },
+        58: { coordinates: [73.0241017, 19.0214035], price: 17000000 },
+        59: { coordinates: [72.97207160890451, 19.17860295], price: 10500000 },
+        60: { coordinates: [73.1146581, 18.9949462], price: 4500000 },
+        61: { coordinates: [73.0663401, 19.0433404], price: 10800000 },
+        62: { coordinates: [72.9947614369014, 19.1163253], price: 11500000 },
+        63: { coordinates: [72.8505837, 19.2565945], price: 19400000 },
+        64: { coordinates: [72.8480292, 19.2474742], price: 9000000 },
+        65: { coordinates: [72.8479905, 19.2294561], price: 30000000 },
+        66: { coordinates: [72.86096607345942, 19.1827254], price: 21200000 },
+        67: { coordinates: [72.86096607345942, 19.1827254], price: 31600000 },
+        68: { coordinates: [73.0190066, 19.0629237], price: 6900000 },
+        69: { coordinates: [72.98392629891234, 19.2570093], price: 12400000 },
+        70: { coordinates: [72.8412155, 19.1840129], price: 21000000 },
+        71: { coordinates: [72.8759248, 19.2097189], price: 12500000 },
+        72: { coordinates: [72.8730296, 19.198814], price: 6800000 },
+        73: { coordinates: [72.8640593, 19.2486925], price: 9200000 },
+        74: { coordinates: [72.97185295714968, 19.2274375], price: 34000000 },
+        75: { coordinates: [73.0591845321935, 19.025773], price: 8800000 },
+        76: { coordinates: [72.99854110561807, 19.10083655], price: 6800000 },
+        77: { coordinates: [72.99854110561807, 19.10083655], price: 12000000 },
+        78: { coordinates: [72.8671624, 19.1068579], price: 8300000 },
+        79: { coordinates: [72.8479905, 19.2294561], price: 22800000 },
+        80: { coordinates: [72.8479905, 19.2294561], price: 44200000 },
+        81: { coordinates: [72.98392629891234, 19.2570093], price: 15500000 },
+        82: { coordinates: [73.01425130283573, 19.03160615], price: 13000000 },
+        83: { coordinates: [72.9995096, 19.1193307], price: 7700000 },
+        84: { coordinates: [73.0201311109118, 18.97686135], price: 16800000 },
+        85: { coordinates: [73.0201311109118, 18.97686135], price: 13200000 },
+        86: { coordinates: [72.9844924192587, 19.22169075], price: 25000000 },
+        87: { coordinates: [72.833968, 19.1172495], price: 29000000 },
+        88: { coordinates: [73.0201311109118, 18.97686135], price: 10000000 },
+        89: { coordinates: [72.999981, 19.1058398], price: 15000000 },
+        90: { coordinates: [72.999981, 19.1058398], price: 18500000 },
+        91: { coordinates: [73.0063977, 19.0842222], price: 42500000 },
+        92: { coordinates: [72.8422235, 19.2084002], price: 20500000 },
+        93: { coordinates: [72.8422235, 19.2084002], price: 25600000 },
+        94: { coordinates: [72.8411995, 19.1633281], price: 19500000 },
+        95: { coordinates: [72.8480292, 19.2474742], price: 14000000 }
+
+      };
+
+        
+
+      var pune = {
+        1: { coordinates: [73.868457, 18.545757], price: 10000 },
+        2: { coordinates: [73.837214, 18.501158], price: 20000 },
+        3: { coordinates: [73.85832, 18.51511], price: 150000 },
+        4: { coordinates: [73.8603, 18.5215], price: 120000 },
+        5: { coordinates: [73.887407, 18.51723], price: 30000 },
+        6: { coordinates: [73.84505, 18.50588], price: 110000 },
+        7: { coordinates: [73.88291, 18.52756], price: 180000 },
+        8: { coordinates: [73.85329, 18.51688], price: 250000 },
+        9: { coordinates: [73.86815, 18.52174], price: 3000000 },
+        10: { coordinates: [73.80311, 18.50619], price: 240000 },
+        11: { coordinates: [73.811615200338,18.5714037349037], price: 240000 },
+        12: { coordinates: [ 73.9031877584951,18.508339768112076], price: 240000 },
+        13: { coordinates: [ 73.78469718936067,18.463917854234715], price: 240000 },
+        14: { coordinates: [ 73.82932914715585,18.465057624202018], price: 240000 },
+        15: { coordinates: [ 73.84958518977975,18.462289598476413], price: 240000 },
+        16: { coordinates: [ 73.90211357149933,18.47124481435429], price: 240000 },
+        17: { coordinates: [73.90159858736482,18.50820048370416], price: 240000 },
+        18: { coordinates: [ 73.82508058038171,18.531350082271626], price: 240000 },
+        19: { coordinates: [ 73.93279648276531,18.506696038556065], price: 240000 },
+        20: { coordinates: [ 73.94250928318516,18.602362280814408,], price: 240000}
+      };
+
+      var bangalore = {
+        1: { coordinates: [77.529921418441, 12.989932041549842], price: 15000 },
+        2: {coordinates: [77.64202482580896, 12.919145905307818],price: 20000},
+        3: {coordinates: [77.60712171660433, 12.92670570007741],price: 180000},
+        4: { coordinates: [77.71054, 12.9645], price: 180000 },
+        5: { coordinates: [77.60001, 13.05141], price: 180000 },
+        6: { coordinates: [77.52117230288049, 12.827069645964146],price: 190000},
+        7: {coordinates: [77.59953884904377, 13.044428595773583],price: 280000},
+        8: {coordinates: [77.39165737580471, 13.116897784083983],price: 380000},
+        9: { coordinates: [77.50441881284624, 13.09732708253803],price: 150000},
+        10: {coordinates: [77.69872181766239, 12.98982727838096],price: 180000}
+      };
+
+      var delhi = {
+        1: { coordinates: [77.337646, 28.638805], price: 10000 },
+        2: { coordinates: [77.378258, 28.628372], price: 10000 },
+        3: { coordinates: [77.3825, 28.630068], price: 10000 },
+        4: { coordinates: [77.371025, 28.613438], price: 10000 },
+        5: { coordinates: [77.346336, 28.602089], price: 10000 },
+        6: { coordinates: [77.362633, 28.59543], price: 10000 },
+        7: { coordinates: [77.325211, 28.569038], price: 10000 },
+        8: { coordinates: [77.305252, 28.589287], price: 10000 },
+        9: { coordinates: [77.337603, 28.639325], price: 10000 },
+        10: { coordinates: [77.378242, 28.639671], price: 10000 },
+        11: { coordinates: [77.072166, 28.63108], price: 10000 },
+        12: { coordinates: [77.123894, 28.642225], price: 10000 },
+        13: { coordinates: [77.102837, 28.667732], price: 10000 },
+        14: { coordinates: [77.121834, 28.675703], price: 10000 },
+        15: { coordinates: [77.0961, 28.649401], price: 10000 },
+        16: { coordinates: [77.147232, 28.693689], price: 10000 },
+        17: { coordinates: [77.157188, 28.70422], price: 10000 },
+        18: { coordinates: [77.121971, 28.71516], price: 10000 },
+        19: { coordinates: [77.128242, 28.72212], price: 10000 },
+        20: { coordinates: [77.138123, 28.737366], price: 10000 },
+        21: { coordinates: [77.210869, 28.632912], price: 10000 },
+        22: { coordinates: [77.213493, 28.641716], price: 10000 },
+        23: { coordinates: [77.214409, 28.628782], price: 10000 },
+        24: { coordinates: [77.228058, 28.626024], price: 10000 }
+      };
+
+      // Function to extract query parameter from URL
+      function getQueryVariable(variable) {
+        const query = window.location.search.substring(1);
+        const vars = query.split("&");
+        for (let i = 0; i < vars.length; i++) {
+          const pair = vars[i].split("=");
+          if (decodeURIComponent(pair[0]) === variable) {
+            return decodeURIComponent(pair[1]);
+          }
+        }
+        return null;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const query = getQueryVariable("query");
+        if (query) {
+          const lowercaseQuery = query.toLowerCase();
+          if (lowercaseQuery === "mumbai") {
+            plotCoordinates(mumbai);
+            flyToCity(mumbai[1].coordinates);
+          } else if (lowercaseQuery === "pune") {
+            plotCoordinates(pune);
+            flyToCity(pune[1].coordinates);
+          } else if (lowercaseQuery === "bangalore") {
+            plotCoordinates(bangalore);
+            flyToCity(bangalore[1].coordinates);
+          } else if (lowercaseQuery === "delhi") {
+            plotCoordinates(delhi);
+            flyToCity(delhi[1].coordinates);
+          } else {
+            // Handle case when query doesn't match any supported city
+            console.log("Sorry, the city you entered is not supported.");
+          }
+        } else {
+          // Handle case when there's no query parameter
+          console.log("No city query found.");
+        }
       });
-    }
-  </script>
-</body>
+
+      function plotCoordinates(coordinatesObj) {
+        Object.values(coordinatesObj).forEach((coord) => {
+          var marker = new mapboxgl.Marker({ color: "red" })
+            .setLngLat(coord.coordinates)
+            .addTo(map);
+
+          var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+            "<h3>Price:</h3><p>" + coord.price + "</p>"
+          );
+
+          marker.setPopup(popup);
+        });
+      }
+
+      function flyToCity(coordinates) {
+        map.flyTo({
+          center: coordinates,
+          zoom: 13,
+        });
+      }
+    </script>
+  </body>
 </html>
