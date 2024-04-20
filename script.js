@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3VtLW1pc2hyYSIsImEiOiJjbHVtdzI1YTQxZWpkMmpue
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-74.5, 40], // Default center coordinates
+    center: coordinates, // Default center coordinates
     zoom: 9 // Default zoom level
 });
 
@@ -40,6 +40,9 @@ function geocode(query) {
             console.log('Error:', error);
         });
 }
+
+
+
 
 
 
