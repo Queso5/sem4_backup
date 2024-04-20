@@ -23,13 +23,56 @@ body { margin: 0; padding: 0; }
     });
 
     var mumbai = {
-      1: { coordinates: [72.932498, 19.119345], price: 60000}, 
-      2: { coordinates: [72.933547, 19.131552], price: 100000 }
+      1: { coordinates: [72.932498, 19.119345], price: 60000},
+      2: { coordinates: [72.933547, 19.131552], price: 100000 },
+      3: { coordinates: [72.8373616, 19.0648226], price: 9500000 },
+      4: { coordinates: [72.833968, 19.1172495], price: 27500000 },
+      5: { coordinates: [72.8412155, 19.1840129], price: 27500000 },
+      6: { coordinates: [72.8411995, 19.1633281], price: 25000000 },
+      7: { coordinates: [72.8618085, 19.1152873	], price: 5500000 },
+      8: { coordinates: [72.8485884, 19.1867193], price: 1000000},
+      9: { coordinates: [72.8485884, 19.1867193], price: 25000000},
+      10:{ coordinates: [72.8422235, 19.2084002], price:14000000 }
+
     };
     
     var pune = {
       1: { coordinates: [73.868457, 18.545757], price: 10000 },
-      2: { coordinates: [73.837214, 18.501158], price: 20000 }
+      2: { coordinates: [73.837214, 18.501158], price: 20000 },
+      3: { coordinates: [73.85832,  18.51511], price: 150000},
+      4: { coordinates: [73.8603,  18.52150], price: 120000},
+      5: { coordinates: [73.887407, 18.51723], price: 30000 },
+      6: { coordinates: [73.84505, 18.50588], price: 110000 },
+      7: { coordinates: [73.88291, 18.52756], price: 180000 },
+      8: { coordinates: [73.85329, 18.51688], price: 250000 },
+      9: { coordinates: [73.86815, 18.52174], price: 3000000 },
+      10: { coordinates: [73.80311, 18.50619], price: 240000 }
+    };
+
+    var bangalore = {
+      1: { coordinates: [77.529921418441, 12.989932041549842], price: 15000 },
+      2: { coordinates: [77.64202482580896,12.919145905307818], price: 20000 },
+      3: { coordinates: [77.60712171660433,12.92670570007741], price: 180000 },
+      4: { coordinates: [77.71054,12.96450], price: 180000},
+      5: { coordinates: [77.60001,13.05141], price: 180000} ,
+      6: { coordinates: [77.52117230288049,12.827069645964146], price: 190000},
+      7: { coordinates: [77.59953884904377,13.044428595773583], price: 280000},
+      8: { coordinates: [77.39165737580471,13.116897784083983], price: 380000},
+      9: { coordinates: [77.50441881284624,13.09732708253803], price: 150000},
+      10: { coordinates: [77.69872181766239,12.98982727838096], price: 180000}
+    };
+    
+    var delhi = {
+      1: { coordinates: [77.03854186806248,  28.452577383256198], price: 10000 },
+      2: { coordinates: [76.99723685049472,  28.476611044049683], price: 10000 },
+      3: { coordinates: [77.07271508403582,  28.484969296869146], price: 10000 },
+      4: { coordinates: [77.03051859126874,  28.53797654806264], price: 10000 },
+      5: { coordinates: [77.06706907444023,  28.440297208455732], price: 10000 },
+      6: { coordinates: [77.03854186806248,  28.452577383256198], price: 10000 },
+      7: { coordinates: [77.05507202251806,  28.59115112816198], price: 10000 },
+      8: { coordinates: [77.11064064327469,  28.652189131279712], price: 10000 },
+      9: { coordinates: [77.20513701440096,  28.560096829276226], price: 10000 },
+      10: { coordinates: [77.23158411198031,  28.62089202384013], price: 10000 }
     };
 
 
@@ -47,17 +90,30 @@ body { margin: 0; padding: 0; }
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-      const query = getQueryVariable('query');
-      if (query) {
-        if (query.toLowerCase() === 'mumbai') {
-          plotCoordinates(mumbai);
-          flyToCity(mumbai[1].coordinates);
-        } else if (query.toLowerCase() === 'pune') {
-          plotCoordinates(pune);
-          flyToCity(pune[1].coordinates);
-        }
-      }
-    });
+  const query = getQueryVariable('query');
+  if (query) {
+    const lowercaseQuery = query.toLowerCase();
+    if (lowercaseQuery === 'mumbai') {
+      plotCoordinates(mumbai);
+      flyToCity(mumbai[1].coordinates);
+    } else if (lowercaseQuery === 'pune') {
+      plotCoordinates(pune);
+      flyToCity(pune[1].coordinates);
+    } else if (lowercaseQuery === 'bangalore') {
+      plotCoordinates(bangalore);
+      flyToCity(bangalore[1].coordinates);
+    } else if (lowercaseQuery === 'delhi') {
+      plotCoordinates(delhi);
+      flyToCity(delhi[1].coordinates);
+    } else {
+      // Handle case when query doesn't match any supported city
+      console.log('Sorry, the city you entered is not supported.');
+    }
+  } else {
+    // Handle case when there's no query parameter
+    console.log('No city query found.');
+  }
+});
 
     function plotCoordinates(coordinatesObj) {
       Object.values(coordinatesObj).forEach((coord) => {
