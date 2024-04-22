@@ -34,7 +34,7 @@ body{
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-color: #f0f0f0; /* Optional: Set background color */
+        background-color: #f0f0f0; 
     }
 
     form {
@@ -45,11 +45,13 @@ body{
         border: 1px solid #ccc;
         border-radius: 5px;
         background-color: #fff;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
     }
 
     input[type="text"] {
-        margin-left: 35rem;
+        margin:0;
         width: 300px;
         padding: 10px;
         margin-bottom: 10px;
@@ -70,6 +72,16 @@ body{
     button:hover {
         background-color: #0056b3;
     }
+}
+
+
+.dropdown{
+    margin-left:32rem;
+    width: 70px;
+    padding: 10px;
+    margin-bottom: 20px;
+    
+   
 }
 
 .container{
