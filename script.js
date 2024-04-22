@@ -41,8 +41,3 @@ function geocode(query) {
         });
 }
 
-
-
-
-
-
