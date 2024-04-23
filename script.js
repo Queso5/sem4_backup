@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3VtLW1pc2hyYSIsImEiOiJjbHVtdzI1YTQxZWpkMmpue
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
-    center: coordinates, // Default center coordinates
-    zoom: 9 // Default zoom level
+    center: coordinates, 
+    zoom: 9 
 });
 
 
@@ -18,20 +18,17 @@ searchInput.addEventListener('keypress', function(e) {
 
 
 function geocode(query) {
-    // Send request to Mapbox Geocoding API
     fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(query) + '.json?access_token=' + mapboxgl.accessToken)
         .then(function(response) {
             return response.json();
         })
         .then(function(data) {
-            // Extract coordinates from response
             var coordinates = data.features[0].geometry.coordinates;
             // Center map at the coordinates
             map.flyTo({
                 center: coordinates,
-                zoom: 12 // Adjust zoom level as needed
+                zoom: 12 
             });
-            // Optionally, add a marker at the coordinates
             new mapboxgl.Marker()
                 .setLngLat(coordinates)
                 .addTo(map);
