@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+</head>
+<body>
+
+<form id="loginForm">
+  <label for="username">Username:</label><br>
+  <input type="text" id="username" name="username"><br>
+  <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password"><br><br>
+  <button type="submit">Login</button>
+</form>
+
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent the default form submission
+  
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  var isLoggedIn = true;
+
+  if (isLoggedIn) {
+    window.location.href = "index.html";
+    
+    document.getElementById("Log In").style.display = "none";
+  } else {
+    
+    alert("Login failed. Please check your credentials.");
+  }
+});
+
+
+document.getElementById("log In").addEventListener("click", function() {
+  
+  document.getElementById("loginForm").submit();
+});
+
+</script> 
+
+  
+
+</body>
+</html>

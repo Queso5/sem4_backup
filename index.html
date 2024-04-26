@@ -15,7 +15,7 @@
           <a href="index.html" class="logo"><i class='bx bxs-home' style='color:#192f6a' ></i>Rent Ease </a>
           <ul class="navbar">
             
-            <li><a href="loginpage.html" class="btn">Log In</a></li>
+            <li><a href="login.html" class="btn">Log In</a></li>
             <li><a href="signup.html" class="btn">Sign up</a></li>
             <li><a href="" class="btn">Add Property</a></li>
         </ul> 
@@ -23,33 +23,30 @@
       </header>
 
       <section class="home" id="home">
-          <div class="top">
+      <div class="top">
 
             <video autoplay loop muted plays-inline class="back-video">
               <source src="./imgs/home.mp4" type="video/mp4">
             </video>
  
-            <div class="content">
+        <div class="content">
               <h1>Find your perfect place to LIVE.</h1>
+              
               <form action="map.html" method="GET" class="search-button">
                 <form action="map.html" method="GET" class="search-button">
-                  <select  class="dropdown" name="type" id="PropertyType">
+                  <select name="type" id="PropertyType" class="dropdown">
                     <option value="all">All</option>
                     <option value="apartment">Apartment</option>
                     <option value="pg">PG</option>
                     <option value="rowhouse">Rowhouse</option>
-                </select>
+                  </select>
                 <input type="text" id="SearchInput" name="query" placeholder="Search...">
-               
-                
                 <button type="submit">Search</button>
-               
-            </form>
-           
-            
-          
-            </div>
-
+                
+              
+              </form>
+        </div>
+      </div>
       </section>
       
         
@@ -146,6 +143,26 @@
         return null;
       }
     };
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Get the selected value from the dropdown menu
+        var selectedType = document.getElementById('PropertyType').value;
+
+        // Get the current form action URL
+        var formAction = document.getElementById('searchForm').action;
+
+        // Modify the form action URL based on the selected type
+        if (selectedType !== 'all') {
+            // Append the selected type to the form action URL
+            document.getElementById('searchForm').action = formAction + '?type=' + selectedType;
+        }
+
+        // Submit the form
+        this.submit();
+    });
+</script>
     
     
   </script>
