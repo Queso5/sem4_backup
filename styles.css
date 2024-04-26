@@ -482,7 +482,7 @@ body{
 
 .footer-container {
     display: flex;
-    grid-template-columns: repeat(autofit,minmax(240px,auto));
+    grid-template-columns: repeat(auto fit,minmax(240px,auto));
     gap: 9.8rem;
 }
 
