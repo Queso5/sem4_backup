@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Rent Ease</title>
+       <link rel="stylesheet" href="styles.css">
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+       <link rel="icon" href="./imgs/favicon.ico">
+       <script src="scryuhiipt.js"></script>
+    </head>
+    <body>
+      
+      <header>
+        <div class="nav-container">
+          <a href="index.html" class="logo"><i class='bx bxs-home' style='color:#192f6a' ></i>Rent Ease </a>
+          <ul class="navbar">
+            <li><a href='login.html' class='btn'>Log Out</a></li>";
+            
+            <li><a href='add_property.html' class='btn'>Add Property</a></li>";
+          </ul> 
+        </div>
+      </header>
+
+      <section class="home" id="home">
+      <div class="top">
+
+            <video autoplay loop muted plays-inline class="back-video">
+              <source src="./imgs/home.mp4" type="video/mp4">
+            </video>
+ 
+        <div class="content">
+              <h1>Find your perfect place to LIVE.</h1>
+              
+              <form action="map.html" method="GET" class="search-button">
+                <form action="map.html" method="GET" class="search-button">
+                  <select name="type" id="PropertyType" class="dropdown">
+                    <option value="all">All</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="pg">PG</option>
+                    <option value="rowhouse">Rowhouse</option>
+                  </select>
+                <input type="text" id="SearchInput" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+                
+              
+              </form>
+        </div>
+      </div>
+      </section>
+      
+        
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+        <section class="property" id="property">
+          <div class="card-grid">
+            <a class="card" href="apartment.html">
+              <div class="card__background" style="background-image: url(https://images.pexels.com/photos/2343468/pexels-photo-2343468.jpeg)"></div>
+              <div class="card__content">
+                <p class="card__category">Looking for a</p>
+                <h3 class="card__heading">Apartment</h3>
+              </div>
+            </a>
+            <a class="card" href="villa.html">
+                <div class="card__background" style="background-image: url(https://images.pexels.com/photos/2480608/pexels-photo-2480608.jpeg?auto=compress&cs=tinysrgb&w=600)"></div>
+                <div class="card__content">
+                  <p class="card__category">Looking for a</p>
+                  <h3 class="card__heading">Villa</h3>
+                </div>
+            </a>
+            <a class="card" href="rowhouse.html">
+              <div class="card__background" style="background-image: url(https://i.pinimg.com/564x/c0/88/89/c0888972ecf2874adea2be5263623973.jpg)"></div>
+              <div class="card__content">
+                <p class="card__category">Looking for a</p>
+                <h3 class="card__heading">Rowhouse</h3>
+              </div>
+            </a>
+        </section>
+
+        <div> 
+          
+        </div>
+
+        <section class="about container" id="about">
+          <div class="about-img">
+             <img src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+          </div>
+          <div class="about-text">
+               
+              <h2>We provide the best Rental<br> Property for You</h2>
+              <p>Welcome to Rent Ease, your premiere destination for hassle-free convinient rentals.
+              We are passionate about connecting people with perfect rental solutions for their needs.
+              At RentEase, we understand that finding the right rental house can be a time-consuming and
+              sometimes a stressful process. That's why we dedicate ourselves to simplify the rental
+              experience thereby making it as enjoyable and seamless as possible.</p>
+              <a href="#" class="btn">Learn More</a>
+          </div>
+          ``
+        </section>
+
+    <section class='footer'>
+    <div class="footer-container container">
+      <h2>
+        <i class='bx bxs-home' style='color:#fff'></i> Rent Ease 
+      </h2>
+        <div class="footer-box">
+          <h3>Quick Links</h3>
+          <a href="apartment.html">Apartments</a>
+          <a href="villa.html">Villas</a>
+          <a href="rowhouse.html">Rowhouses</a>
+        </div> 
+        <div class="footer-box">
+          <h3>
+            Contacts
+          </h3>
+          <a href="#">705-885-0277/932-635-5984</a>
+          <a href="#">reatease@gmail.com</a>
+        </div>
+        <div class="social">
+          <a href="https://www.facebook.com/profile.php?id=61552895114263&mibextid=2JQ9oc"><i class='bx bxl-facebook' ></i></a>
+          <a href="https://www.instagram.com/_rentease/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><i class='bx bxl-instagram' ></i></a>
+          <a href="https://x.com/_rentease?t=M7mg4KQaFrdXbcjKoM0HNQ&s=08"><i class='bx bxl-twitter' ></i></a>
+        </div>
+    </div>
+    <p class="copyright">© Rent Ease</p>
+    <p class="copyright">Project made by Tejas, Sumit & Soham</p>
+  </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchForm = document.getElementById('searchForm');
+      searchForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const searchInput = document.getElementById('SearchInput').value;
+        window.location.href = `map.html?query=${encodeURIComponent(searchInput)}`;
+      });
+    });
+
+    // Add this method to the code
+    map.getCoordinates = function() {
+      if (map.getCenter()) {
+        return map.getCenter().lngLat;
+      } else {
+        return null;
+      }
+    };
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Get the selected value from the dropdown menu
+        var selectedType = document.getElementById('PropertyType').value;
+
+        // Get the current form action URL
+        var formAction = document.getElementById('searchForm').action;
+
+        // Modify the form action URL based on the selected type
+        if (selectedType !== 'all') {
+            // Append the selected type to the form action URL
+            document.getElementById('searchForm').action = formAction + '?type=' + selectedType;
+        }
+
+        // Submit the form
+        this.submit();
+    });
+</script>
+    
+    
+  </script>
+
+  </body>
+</html>
