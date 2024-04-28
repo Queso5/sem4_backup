@@ -5,6 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fullname = $_POST["username"];
         $email = $_POST["id"];
         $password = $_POST["password"];
+        //connectonline
 
         $conn = new mysqli("localhost", "root", "", "rent_ease");
 

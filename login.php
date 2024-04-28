@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["id"];
-    $password = $_POST["password"];
+    $password = $_POST["password"];//password
 
     
     $conn = new mysqli("localhost", "root", "", "rent_ease");
