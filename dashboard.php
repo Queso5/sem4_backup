@@ -8,7 +8,7 @@
       }
       
       // Display welcome message with the username
-      $email = $_SESSION["email"];
+      $username= $_SESSION["username"];
       ?>
 
 
@@ -29,9 +29,9 @@
         <div class="nav-container">
           <a href="index.html" class="logo"><i class='bx bxs-home' style='color:#192f6a' ></i>Rent Ease </a>
           <ul class="navbar">
-            <li> Welcome, <?php echo $email; ?> <a href='login.html' class='btn'>Log Out</a></li>"; 
+             <a Welcome <?php echo $username; ?> class='welcome'>
+            <li><a href='logout.php' class='btn'>Log Out</a></li>"; 
             <li><a href='add_property.html' class='btn'>Add Property</a></li>";
-            
           </ul> 
         </div>
       </header>

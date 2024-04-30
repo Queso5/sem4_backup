@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Store data in session variables
             $_SESSION["loggedin"] = true;
-            $_SESSION["email"] = $email;
+            $_SESSION["username"] = $username;
 
             // Redirect to dashboard
             header("Location: dashboard.php");
