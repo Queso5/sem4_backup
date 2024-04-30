@@ -1,4 +1,18 @@
-<!DOCTYPE html>
+<?php
+      session_start();
+      
+      // Check if the user is logged in, if not, redirect to login page
+      if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+          header("location: login.php");
+          exit;
+      }
+      
+      // Display welcome message with the username
+      $email = $_SESSION["email"];
+      ?>
+
+
+<DOCTYPE html>
 <html lang="en">
     <head>
        <meta charset="UTF-8">
@@ -9,15 +23,15 @@
        <link rel="icon" href="./imgs/favicon.ico">
        <script src="scryuhiipt.js"></script>
     </head>
-    <body>
+    <body>  
       <!--logout button-->
       <header>
         <div class="nav-container">
           <a href="index.html" class="logo"><i class='bx bxs-home' style='color:#192f6a' ></i>Rent Ease </a>
           <ul class="navbar">
             <li><a href='login.html' class='btn'>Log Out</a></li>";
-            
             <li><a href='add_property.html' class='btn'>Add Property</a></li>";
+            <h2>Welcome, <?php echo $email; ?>!</h2>
           </ul> 
         </div>
       </header>
@@ -163,9 +177,5 @@
         this.submit();
     });
 </script>
-    
-    
-  </script>
-
   </body>
 </html>
