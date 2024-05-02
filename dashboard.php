@@ -29,9 +29,9 @@
         <div class="nav-container">
           <a href="index.html" class="logo"><i class='bx bxs-home' style='color:#192f6a' ></i>Rent Ease </a>
           <ul class="navbar">
-             <a Welcome <?php echo $username; ?> class='welcome'>
+            Welcome <?php echo $username ?> 
             <li><a href='logout.php' class='btn'>Log Out</a></li>"; 
-            <li><a href='add_property.html' class='btn'>Add Property</a></li>";
+            <li><a href='addprop.html' class='btn'>Add Property</a></li>";
           </ul> 
         </div>
       </header>
@@ -79,7 +79,7 @@
                 <div class="card__background" style="background-image: url(https://images.pexels.com/photos/2480608/pexels-photo-2480608.jpeg?auto=compress&cs=tinysrgb&w=600)"></div>
                 <div class="card__content">
                   <p class="card__category">Looking for a</p>
-                  <h3 class="card__heading">Villa</h3>
+                  <h3 class="card__heading">PG</h3>
                 </div>
             </a>
             <a class="card" href="rowhouse.html">
