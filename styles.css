@@ -536,3 +536,76 @@ body{
     text-align: center;
     padding-top: 1rem;
 }
+
+
+.add_prop {
+    min-height: 100vh;
+    background: url("./imgs/add_prop.mp4");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    background: rgba(14, 18, 22, 0.8);
+    width: 60%;
+    color: white;
+    border-radius: 20px;
+    margin-top: 5rem;
+}
+
+.form-head {
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.name-form {
+    
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.desc-form {
+    padding: 28px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.number-form {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.img-form {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.form-wrapper button {
+    width: 100%;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-bottom-left-radius: 20px ;
+    border-bottom-right-radius: 20px ;
+    padding: 2rem 6rem;
+    background:  #0459ba;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+.form-wrapper button:hover {
+    background: #358df2;
+}
+
+.form-wrapper input {
+    padding: 1rem 3rem;
+}
+.form-wrapper label{
+    margin: 0rem 5rem 0rem 0rem;
+}

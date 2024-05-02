@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["id"];
+    $username = $_POST["username"];
     $password = $_POST["password"];
 
     $conn = new mysqli("localhost", "root", "", "rent_ease");
@@ -11,14 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM signup_rentease WHERE email = ? AND password = ?";
+    $sql = "SELECT * FROM signup_rentease WHERE username = ? AND password = ?";
     $stmt = $conn->prepare($sql);
 
     if (!$stmt) {
         die("Error in SQL query: " . $conn->error);
     }
 
-    $stmt->bind_param("ss", $email, $password);
+    $stmt->bind_param("ss", $username, $password);
 
     if ($stmt->execute()) {
         $result = $stmt->get_result();
