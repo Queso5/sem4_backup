@@ -47,7 +47,6 @@
               <h1>Find your perfect place to LIVE.</h1>
               
               <form action="map.html" method="GET" class="search-button">
-                <form action="map.html" method="GET" class="search-button">
                   <select name="type" id="PropertyType" class="dropdown">
                     <option value="all">All</option>
                     <option value="apartment">Apartment</option>
