@@ -1,17 +1,3 @@
-<?php
-      session_start();
-      
-      // Check if the user is logged in, if not, redirect to login page
-      if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-          header("location: login.php");
-          exit;
-      }
-      
-      // Display welcome message with the username
-      $username= $_SESSION["username"];
-      ?>
-
-
 <DOCTYPE html>
 <html lang="en">
     <head>
@@ -67,27 +53,28 @@
 
         <section class="property" id="property">
           <div class="card-grid">
-            <a class="card" href="apartment.html">
+            <a class="card" href="property.html">
               <div class="card__background" style="background-image: url(https://images.pexels.com/photos/2343468/pexels-photo-2343468.jpeg)"></div>
               <div class="card__content">
-                <p class="card__category">Looking for a</p>
-                <h3 class="card__heading">Apartment</h3>
+                <p class="card__category">Looking in</p>
+                <h3 class="card__heading">Mumbai</h3>
               </div>
             </a>
-            <a class="card" href="villa.html">
+            <a class="card" href="property.html">
                 <div class="card__background" style="background-image: url(https://images.pexels.com/photos/2480608/pexels-photo-2480608.jpeg?auto=compress&cs=tinysrgb&w=600)"></div>
                 <div class="card__content">
-                  <p class="card__category">Looking for a</p>
-                  <h3 class="card__heading">PG</h3>
+                  <p class="card__category">Looking in</p>
+                  <h3 class="card__heading">Delhi</h3>
                 </div>
             </a>
-            <a class="card" href="rowhouse.html">
+            <a class="card" href="property.html">
               <div class="card__background" style="background-image: url(https://i.pinimg.com/564x/c0/88/89/c0888972ecf2874adea2be5263623973.jpg)"></div>
               <div class="card__content">
-                <p class="card__category">Looking for a</p>
-                <h3 class="card__heading">Rowhouse</h3>
+                <p class="card__category">Looking in</p>
+                <h3 class="card__heading">Pune</h3>
               </div>
             </a>
+           
         </section>
 
         <div> 

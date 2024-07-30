@@ -146,6 +146,7 @@ header{
 
 .nav-container{
     justify-content: space-between;
+    background-color:beige
 }
 
 
@@ -180,8 +181,11 @@ header{
     top: 0;
     left: 0;
     padding: 20px 8%;
-    display: flex;
-    align-items: center;
+    display: inline-flex;
+    border: 2px solid #0000;
+
+    
+    
 }
 
 .nav-container .logo{
@@ -319,12 +323,7 @@ header{
     --width-container: 1200px;
 }
   
-*{
-    border: 0;
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
-}
+
   
 html{
      height: 100%;
@@ -370,6 +369,10 @@ body{
 .card{
     list-style: none;
     position: relative;
+   
+
+
+
 }
   
 .card:before{
@@ -608,3 +611,34 @@ body{
 .form-wrapper label{
     margin: 0rem 5rem 0rem 0rem;
 }
+
+.container-prop{
+   
+    height: 100%;
+    margin-top: 100px;
+    display: flex;  
+    padding: 10px;
+     
+}
+
+.property-main{
+    align-items: center; 
+    display: flex;
+    background-color: #0056b3;
+    width: 95rem;
+    height: 100%;
+    display: absolute;
+    min-height: 40%;
+    border: 2px solid black;
+}
+.searchProp{  /* css for para in searh bar division */
+    color: black;
+}
+.listings{
+    border: 2px solid black;
+    padding-left: 15px;
+    margin-left: 15px;
+}
+
+
+
