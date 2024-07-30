@@ -21,7 +21,59 @@
             <div class="container-prop">
                 <div class="property-main">
                     <p class="searchProp">
-                       search filter for soham 
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Search Filter</title>
+                            <link rel="stylesheet" href="styles.css">
+                        </head>
+                        <body>
+                            <div class="filter-container">
+                                <div class="filter-section">
+                                    <label for="priceRange">PRICE RANGE:</label>
+                                    <input type="range" id="priceRange" min="0" max="100000" step="1000" value="50000" oninput="updatePrice()">
+                                    <div class="price-labels">
+                                        <span id="minPrice">0</span>
+                                        <span id="maxPrice">100,000</span>
+                                    </div>
+                                </div>
+                        
+                                <div class="filter-section">
+                                    <label>NUMBER OF BEDROOMS:</label>
+                                    <div class="button-group">
+                                        <button onclick="filterBedrooms('1bhk')">1 BHK</button>
+                                        <button onclick="filterBedrooms('2bhk')">2 BHK</button>
+                                        <button onclick="filterBedrooms('3bhk')">3 BHK</button>
+                                        <button onclick="filterBedrooms('4bhk')">4 BHK</button>
+                                        <button onclick="filterBedrooms('5bhk')">5 BHK</button>
+                                        <button onclick="filterBedrooms('8bhk')">8 BHK</button>
+                                        <button onclick="filterBedrooms('6bhk')">6 BHK</button>
+                                        <button onclick="filterBedrooms('7bhk')">7 BHK</button>
+                                    </div>
+                                </div>
+                        
+                                <div class="filter-section">
+                                    <label>Posted By:</label>
+                                    <div class="button-group">
+                                        <button onclick="filterPostedBy('owner')">Owner</button>
+                                        <button onclick="filterPostedBy('builder')">Builder</button>
+                                        <button onclick="filterPostedBy('broker')">Broker</button>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <script src="script.js"></script>
+                        </body>
+                        </html>
+                        
+                    
+    
+                         
+            
+                        
+                        
                     </p>
                 </div>
                 <div class="listings">

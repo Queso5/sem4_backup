@@ -624,7 +624,7 @@ body{
 .property-main{
     align-items: center; 
     display: flex;
-    background-color: #0056b3;
+    background-color: #ffffff;
     width: 95rem;
     height: 100%;
     display: absolute;
@@ -641,4 +641,40 @@ body{
 }
 
 
+body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+}
+
+.filter-container {
+    max-width: 600px;
+    margin: auto;
+    border: 5px solid #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.filter-section {
+    margin-bottom: 60px;
+}
+
+.price-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.button-group button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #dfe4ea;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-group button:hover {
+    background-color: #c8e3e8;
+}
 
