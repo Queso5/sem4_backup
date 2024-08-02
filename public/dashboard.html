@@ -16,8 +16,8 @@
           <a href="index.html" class="logo"><i class='bx bxs-home' style='color:#192f6a' ></i>Rent Ease </a>
           <ul class="navbar">
             Welcome <?php echo $username ?> 
-            <li><a href='logout.php' class='btn'>Log Out</a></li>"; 
-            <li><a href='addproperty.html' class='btn'>Add Property</a></li>";
+            <li><a href='logout.php' class='btn'>Log Out</a></li>
+            <li><a href='addproperty.html' class='btn'>Add Property</a></li>
           </ul> 
         </div>
       </header>
@@ -33,16 +33,10 @@
               <h1>Find your perfect place to LIVE.</h1>
               
               <form action="map.html" method="GET" class="search-button">
-                  <select name="type" id="PropertyType" class="dropdown">
-                    <option value="all">All</option>
-                    <option value="apartment">Apartment</option>
-                    <option value="pg">PG</option>
-                    <option value="rowhouse">Rowhouse</option>
-                  </select>
-                <input type="text" id="SearchInput" name="query" placeholder="Search...">
-                <button type="submit">Search</button>
-                
-              
+                <div class="searchBar">
+                  <input type="text" id="SearchInput" name="query" placeholder="Search...">
+                  <button type="submit">Search</button>
+                </div>
               </form>
         </div>
       </div>
@@ -57,14 +51,14 @@
               <div class="card__background" style="background-image: url(https://images.pexels.com/photos/2343468/pexels-photo-2343468.jpeg)"></div>
               <div class="card__content">
                 <p class="card__category">Looking in</p>
-                <h3 class="card__heading">Mumbai</h3>
+                <h3 class="card__heading">Delhi</h3>
               </div>
             </a>
             <a class="card" href="property.html">
                 <div class="card__background" style="background-image: url(https://images.pexels.com/photos/2480608/pexels-photo-2480608.jpeg?auto=compress&cs=tinysrgb&w=600)"></div>
                 <div class="card__content">
                   <p class="card__category">Looking in</p>
-                  <h3 class="card__heading">Delhi</h3>
+                  <h3 class="card__heading">Mumbai</h3>
                 </div>
             </a>
             <a class="card" href="property.html">
@@ -105,9 +99,9 @@
       </h2>
         <div class="footer-box">
           <h3>Quick Links</h3>
-          <a href="apartment.html">Apartments</a>
-          <a href="villa.html">Villas</a>
-          <a href="rowhouse.html">Rowhouses</a>
+          <a href="property.html">Delhi</a>
+          <a href="property.html">Mumbai</a>
+          <a href="property.html">Pune</a>
         </div> 
         <div class="footer-box">
           <h3>

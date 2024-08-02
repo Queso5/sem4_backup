@@ -15,7 +15,27 @@ app.get('/data', async (req, res) => {
     try {
         await client.connect();
         const collection = client.db('rental_listings').collection('delhi');
-        const data = await collection.find({}).toArray();
+
+        // Build the query based on the request parameters
+        let query = {};
+
+        // Filter by price range
+        if (req.query.priceRange) {
+            const priceRange = parseInt(req.query.priceRange, 10);
+            query.rent = { $lte: priceRange };
+        }
+
+        // Filter by number of bedrooms
+        if (req.query.bedrooms) {
+            query.bedrooms = { $in: req.query.bedrooms.split(',').map(bhk => parseInt(bhk.replace('bhk', ''), 10)) };
+        }
+
+        // Filter by amenities
+        if (req.query.amenities) {
+            query.amenities = { $all: req.query.amenities.split(',') };
+        }
+
+        const data = await collection.find(query).toArray();
         res.json(data);
     } catch (error) {
         console.error('Error fetching data:', error);

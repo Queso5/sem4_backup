@@ -14,5 +14,5 @@ function filterBedrooms(bedroomType) {
 
 function filteramenities(amenities) {
     console.log('Filter amenities:', amenities);
-    // Implement the logic to filter listings based on amenities
+    // Implement the logic to filter listings based on amenties
 }
